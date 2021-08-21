@@ -1,5 +1,7 @@
 package io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.dao;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 public interface BaseDAO<T> {
@@ -9,7 +11,7 @@ public interface BaseDAO<T> {
 
     T save(T object);
 
-    T updateById(int id);
+    T updateById(int id, T object);
 
-    void deleteById(int i);
+    void deleteById(int id);
 }

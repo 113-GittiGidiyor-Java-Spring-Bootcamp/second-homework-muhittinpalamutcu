@@ -9,7 +9,7 @@ public interface BaseService<T> {
 
     T save(T object);
 
-    T updateById(int id);
+    T updateById(int id, T object);
 
-    void deleteById(int i);
+    void deleteById(int id);
 }
