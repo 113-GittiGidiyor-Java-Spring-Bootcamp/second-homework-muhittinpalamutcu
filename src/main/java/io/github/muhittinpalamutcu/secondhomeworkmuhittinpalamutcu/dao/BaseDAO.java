@@ -1,8 +1,8 @@
-package io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.service;
+package io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.dao;
 
 import java.util.List;
 
-public interface BaseService<T> {
+public interface BaseDAO<T> {
     List<T> findAll();
 
     T findById(int id);
