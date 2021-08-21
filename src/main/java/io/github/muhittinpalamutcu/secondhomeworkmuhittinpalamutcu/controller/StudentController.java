@@ -15,14 +15,14 @@ public class StudentController {
 
     StudentService studentService;
 
-    //dependency injection via constructor
+    //Dependency injection via constructor
     @Autowired
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
 
     // @desc Get all students
-    // @route Get /api/users/students
+    // @route Get /api/students
     // @access Public
     @GetMapping("/students")
     public ResponseEntity<List<Student>> findAllStudents() {
@@ -30,7 +30,7 @@ public class StudentController {
     }
 
     // @desc Record new student
-    // @route Post /api/users/students
+    // @route Post /api/students
     // @access Public
     @PostMapping("/students")
     public Student saveStudent(@RequestBody Student student) {
@@ -38,7 +38,7 @@ public class StudentController {
     }
 
     // @desc Get student information by id
-    // @route Get /api/users/students/{id}
+    // @route Get /api/students/{id}
     // @access Public
     @GetMapping("/students/{id}")
     public Student findStudentById(@PathVariable int id) {
@@ -46,7 +46,7 @@ public class StudentController {
     }
 
     // @desc Update student information by id
-    // @route Put /api/users/students/{id}
+    // @route Put /api/students/{id}
     // @access Public
     @PutMapping("/students/{id}")
     public Student updateStudentById(@PathVariable int id, @RequestBody Student student) {
@@ -54,7 +54,7 @@ public class StudentController {
     }
 
     // @desc Delete student by id
-    // @route Delete /api/users/students/{id}
+    // @route Delete /api/students/{id}
     // @access Public
     @DeleteMapping("/students/{id}")
     public ResponseEntity<String> deleteStudentById(@PathVariable int id) {
