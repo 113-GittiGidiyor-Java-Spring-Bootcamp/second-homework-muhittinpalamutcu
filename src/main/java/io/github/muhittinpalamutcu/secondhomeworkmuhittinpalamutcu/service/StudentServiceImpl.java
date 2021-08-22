@@ -47,6 +47,7 @@ public class StudentServiceImpl implements BaseService<Student>, StudentService 
         studentDAO.deleteById(id);
     }
 
+
     @Override
     @Transactional
     public void enrollInCourse(int id, String courseCode) {

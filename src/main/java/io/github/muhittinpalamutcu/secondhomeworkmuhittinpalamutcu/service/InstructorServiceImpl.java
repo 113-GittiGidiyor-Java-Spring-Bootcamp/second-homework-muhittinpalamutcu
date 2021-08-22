@@ -4,11 +4,12 @@ import io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.dao.Instructo
 import io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.model.Instructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Repository
+@Service
 public class InstructorServiceImpl implements BaseService<Instructor> {
 
     private InstructorDAO instructorDAO;

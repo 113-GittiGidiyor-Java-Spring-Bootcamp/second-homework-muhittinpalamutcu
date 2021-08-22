@@ -63,6 +63,8 @@ public class StudentController {
         return new ResponseEntity<>("Student deleted succesfully...", HttpStatus.OK);
     }
 
+
+    /*
     // @desc Student enroll in a course
     // @route Post /api/students/enrollInCourses
     // @access Public
@@ -70,6 +72,6 @@ public class StudentController {
     public ResponseEntity<String> studentEnrollInCourse(@RequestBody EnrollInCourse enrollInCourse) {
         studentServiceImpl.enrollInCourse(enrollInCourse.getId(), enrollInCourse.getCourseCode());
         return new ResponseEntity<>("Student successfully enrolled a class: " + enrollInCourse.getCourseCode(), HttpStatus.OK);
-    }
+    }*/
 
 }
