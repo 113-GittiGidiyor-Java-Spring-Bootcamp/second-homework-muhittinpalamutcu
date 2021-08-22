@@ -4,5 +4,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StudentDAO<Student> extends BaseDAO<Student> {
-
+    void enrollInCourse(int id, String courseCode);
 }

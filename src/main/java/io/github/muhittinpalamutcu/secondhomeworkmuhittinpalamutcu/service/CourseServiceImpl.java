@@ -9,11 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public class CourseService implements BaseService<Course> {
+public class CourseServiceImpl implements BaseService<Course> {
 
     private CourseDAO courseDAO;
 
-    public CourseService(CourseDAO courseDAO) {
+    public CourseServiceImpl(CourseDAO courseDAO) {
         this.courseDAO = courseDAO;
     }
 

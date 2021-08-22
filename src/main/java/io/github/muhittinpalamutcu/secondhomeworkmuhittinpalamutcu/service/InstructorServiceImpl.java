@@ -9,12 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public class InstructorService implements BaseService<Instructor> {
+public class InstructorServiceImpl implements BaseService<Instructor> {
 
     private InstructorDAO instructorDAO;
 
     @Autowired
-    public InstructorService(InstructorDAO instructorDAO) {
+    public InstructorServiceImpl(InstructorDAO instructorDAO) {
         this.instructorDAO = instructorDAO;
     }
 

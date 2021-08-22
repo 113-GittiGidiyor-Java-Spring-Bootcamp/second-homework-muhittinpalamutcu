@@ -1,5 +1,6 @@
 package io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.dao;
 
+import io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.model.Course;
 import io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -49,5 +50,14 @@ public class StudentDAOJPAImpl implements StudentDAO<Student> {
     @Override
     public void deleteById(int id) {
         entityManager.remove(entityManager.find(Student.class, id));
+    }
+
+
+    @Override
+    public void enrollInCourse(int id, String courseCode) {
+        Student student = entityManager.find(Student.class, id);
+        Course course = entityManager.createQuery("from Course c where c.courseCode=:courseCode", Course.class).setParameter("courseCode", courseCode).getSingleResult();
+        student.getCourses().add(course);
+        entityManager.merge(student);
     }
 }

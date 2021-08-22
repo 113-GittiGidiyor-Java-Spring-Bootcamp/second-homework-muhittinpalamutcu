@@ -1,7 +1,7 @@
 package io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.controller;
 
 import io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.model.Course;
-import io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.service.CourseService;
+import io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.service.CourseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,12 +13,12 @@ import java.util.List;
 @RequestMapping("/api")
 public class CourseController {
 
-    CourseService courseService;
+    CourseServiceImpl courseServiceImpl;
 
     //Dependency injection via constructor
     @Autowired
-    public CourseController(CourseService courseService) {
-        this.courseService = courseService;
+    public CourseController(CourseServiceImpl courseServiceImpl) {
+        this.courseServiceImpl = courseServiceImpl;
     }
 
     // @desc Get all courses
@@ -26,7 +26,7 @@ public class CourseController {
     // @access Public
     @GetMapping("/courses")
     public ResponseEntity<List<Course>> findAllCourses() {
-        return new ResponseEntity<>(courseService.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(courseServiceImpl.findAll(), HttpStatus.OK);
     }
 
     // @desc Record new course
@@ -34,7 +34,7 @@ public class CourseController {
     // @access Public
     @PostMapping("/courses")
     public Course saveNewCourse(@RequestBody Course course) {
-        return courseService.save(course);
+        return courseServiceImpl.save(course);
     }
 
     // @desc Get course information by id
@@ -42,7 +42,7 @@ public class CourseController {
     // @access Public
     @GetMapping("/courses/{id}")
     public Course findCourseById(@PathVariable int id) {
-        return courseService.findById(id);
+        return courseServiceImpl.findById(id);
     }
 
     // @desc Update course information by id
@@ -50,7 +50,7 @@ public class CourseController {
     // @access Public
     @PutMapping("/courses/{id}")
     public Course updateCourseById(@PathVariable int id, @RequestBody Course course) {
-        return courseService.updateById(id, course);
+        return courseServiceImpl.updateById(id, course);
     }
 
     // @desc Delete course by id
@@ -58,7 +58,7 @@ public class CourseController {
     // @access Public
     @DeleteMapping("/courses/{id}")
     public ResponseEntity<String> deleteCourseById(@PathVariable int id) {
-        courseService.deleteById(id);
+        courseServiceImpl.deleteById(id);
         return new ResponseEntity<>("Course deleted succesfully...", HttpStatus.OK);
     }
 

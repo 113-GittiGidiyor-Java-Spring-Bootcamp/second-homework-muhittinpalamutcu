@@ -1,7 +1,8 @@
 package io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.controller;
 
+import io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.model.EnrollInCourse;
 import io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.model.Student;
-import io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.service.StudentService;
+import io.github.muhittinpalamutcu.secondhomeworkmuhittinpalamutcu.service.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,12 +14,12 @@ import java.util.List;
 @RequestMapping("/api")
 public class StudentController {
 
-    StudentService studentService;
+    StudentServiceImpl studentServiceImpl;
 
     //Dependency injection via constructor
     @Autowired
-    public StudentController(StudentService studentService) {
-        this.studentService = studentService;
+    public StudentController(StudentServiceImpl studentServiceImpl) {
+        this.studentServiceImpl = studentServiceImpl;
     }
 
     // @desc Get all students
@@ -26,7 +27,7 @@ public class StudentController {
     // @access Public
     @GetMapping("/students")
     public ResponseEntity<List<Student>> findAllStudents() {
-        return new ResponseEntity<>(studentService.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(studentServiceImpl.findAll(), HttpStatus.OK);
     }
 
     // @desc Record new student
@@ -34,7 +35,7 @@ public class StudentController {
     // @access Public
     @PostMapping("/students")
     public Student saveStudent(@RequestBody Student student) {
-        return studentService.save(student);
+        return studentServiceImpl.save(student);
     }
 
     // @desc Get student information by id
@@ -42,7 +43,7 @@ public class StudentController {
     // @access Public
     @GetMapping("/students/{id}")
     public Student findStudentById(@PathVariable int id) {
-        return studentService.findById(id);
+        return studentServiceImpl.findById(id);
     }
 
     // @desc Update student information by id
@@ -50,7 +51,7 @@ public class StudentController {
     // @access Public
     @PutMapping("/students/{id}")
     public Student updateStudentById(@PathVariable int id, @RequestBody Student student) {
-        return studentService.updateById(id, student);
+        return studentServiceImpl.updateById(id, student);
     }
 
     // @desc Delete student by id
@@ -58,8 +59,17 @@ public class StudentController {
     // @access Public
     @DeleteMapping("/students/{id}")
     public ResponseEntity<String> deleteStudentById(@PathVariable int id) {
-        studentService.deleteById(id);
+        studentServiceImpl.deleteById(id);
         return new ResponseEntity<>("Student deleted succesfully...", HttpStatus.OK);
+    }
+
+    // @desc Student enroll in a course
+    // @route Post /api/students/enrollInCourses
+    // @access Public
+    @PostMapping("/students/enrollInCourses")
+    public ResponseEntity<String> studentEnrollInCourse(@RequestBody EnrollInCourse enrollInCourse) {
+        studentServiceImpl.enrollInCourse(enrollInCourse.getId(), enrollInCourse.getCourseCode());
+        return new ResponseEntity<>("Student successfully enrolled a class: " + enrollInCourse.getCourseCode(), HttpStatus.OK);
     }
 
 }
