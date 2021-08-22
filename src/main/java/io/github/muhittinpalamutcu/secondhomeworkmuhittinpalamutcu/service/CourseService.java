@@ -13,8 +13,6 @@ public class CourseService implements BaseService<Course> {
 
     private CourseDAO courseDAO;
 
-    //Dependency injection with CourseDAO interface
-    @Autowired
     public CourseService(CourseDAO courseDAO) {
         this.courseDAO = courseDAO;
     }
